@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 
 """
 a simple implementation of Apriori algorithm by Python.
@@ -13,16 +13,8 @@ from collections import namedtuple
 from itertools import combinations
 from itertools import chain
 
-
-# Meta informations.
-__version__ = '1.1.1'
-__author__ = 'Yu Mochizuki'
-__author_email__ = 'ymoch.dev@gmail.com'
-
-
-################################################################################
 # Data structures.
-################################################################################
+
 class TransactionManager(object):
     """
     Transaction managers.
@@ -129,10 +121,8 @@ RelationRecord = namedtuple( # pylint: disable=C0103
 OrderedStatistic = namedtuple( # pylint: disable=C0103
     'OrderedStatistic', ('items_base', 'items_add', 'confidence', 'lift',))
 
-
-################################################################################
 # Inner functions.
-################################################################################
+
 def create_next_candidates(prev_candidates, length):
     """
     Returns the apriori candidates as a list.
@@ -243,10 +233,8 @@ def filter_ordered_statistics(ordered_statistics, **kwargs):
             continue
         yield ordered_statistic
 
-
-################################################################################
 # API function.
-################################################################################
+
 def apriori(transactions, **kwargs):
     """
     Executes Apriori algorithm and returns a RelationRecord generator.
@@ -298,10 +286,8 @@ def apriori(transactions, **kwargs):
         yield RelationRecord(
             support_record.items, support_record.support, ordered_statistics)
 
-
-################################################################################
 # Application functions.
-################################################################################
+
 def parse_args(argv):
     """
     Parse commandline arguments.
